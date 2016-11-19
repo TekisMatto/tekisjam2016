@@ -20,7 +20,6 @@ public class RockSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		spawnTimer -= Time.deltaTime * 5;
-		Debug.Log ("timer: " + spawnTimer);
 		if (spawnTimer > 0) {
 			return;
 		}
