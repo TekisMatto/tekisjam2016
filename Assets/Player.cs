@@ -35,18 +35,19 @@ public class Player : MonoBehaviour
         
 		movement = speed * Input.GetAxis("Horizontal_id" + player_id);
         playerRigidbody.velocity += new Vector2(movement, 0);
-        if (Mathf.Abs(playerRigidbody.velocity.x) > maxSpeed)
-            if (playerRigidbody.velocity.x > 0)
-                playerRigidbody.velocity = new Vector2(maxSpeed, playerRigidbody.velocity.y);
-            else
-                playerRigidbody.velocity = new Vector2(-maxSpeed, playerRigidbody.velocity.y);
-
+		if (Mathf.Abs (playerRigidbody.velocity.x) > maxSpeed)
+		{
+			if (playerRigidbody.velocity.x > 0)
+				playerRigidbody.velocity = new Vector2 (maxSpeed, playerRigidbody.velocity.y);
+			else
+				playerRigidbody.velocity = new Vector2 (-maxSpeed, playerRigidbody.velocity.y);
+		}
     }
 
     void Jump()
     {
         if (Input.GetButtonDown("Jump_id" + player_id) && isGrounded)
-        {
+		{
             playerRigidbody.velocity += new Vector2(0, jumpSpeed);
             isGrounded = false;
         }
