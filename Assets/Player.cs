@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 
     Rigidbody2D playerRigidbody;
 
+	public int player_id;
     public float speed;
     public float maxSpeed;
     public float jumpSpeed;
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
     {
         float movement;
         
-        movement = speed * Input.GetAxis("Horizontal");
+		movement = speed * Input.GetAxis("Horizontal_id" + player_id);
         playerRigidbody.velocity += new Vector2(movement, 0);
         if (Mathf.Abs(playerRigidbody.velocity.x) > maxSpeed)
             if (playerRigidbody.velocity.x > 0)
@@ -44,7 +45,7 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump_id" + player_id) && isGrounded)
         {
             playerRigidbody.velocity += new Vector2(0, jumpSpeed);
             isGrounded = false;
