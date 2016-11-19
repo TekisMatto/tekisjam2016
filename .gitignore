@@ -1,1 +1,4 @@
-Temp
+Temp/
+Library/
+obj/
+*.userprefs
