@@ -19,7 +19,6 @@ public class Hitbox : MonoBehaviour {
 //			collider.gameObject.GetComponent <OnHitRock> ().OnHit (gameObject.transform.parent, type);
 		} else if (collider.gameObject.tag == "Rock") {
 			collider.gameObject.GetComponent <OnHitRock> ().OnHit (gameObject.transform.parent.gameObject, type);
-			Debug.Log("Rock hit");
 		}
 	}
 }

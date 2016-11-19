@@ -16,7 +16,6 @@ public class OnHitRock : MonoBehaviour {
 	 *	type 1: smoethingd 
 	 */
 	public void OnHit (GameObject hitter, int type) {
-		Debug.Log ("Hit acknowledged");
 		--rockHealth;
 		if (rockHealth <= 0) {
 			Destroy (gameObject);
