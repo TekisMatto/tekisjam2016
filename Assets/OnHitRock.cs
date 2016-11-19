@@ -15,12 +15,13 @@ public class OnHitRock : MonoBehaviour {
 	 *	type 0: normal
 	 *	type 1: smoethingd 
 	 */
-	void OnHit(int type, bool facingRight) {
+	void OnHit(GameObject hitter, int type) {
 		--rockHealth;
 		if (rockHealth <= 0) {
 			Destroy (gameObject);
 		}
 
+        bool facingRight = hitter.GetComponent<Facing>().isFacingRight;
 		gameObject.GetComponent <Rigidbody2D>().AddForce (new Vector2(
 			5 * force * (facingRight ? 1 : -1),
 			2 * force), ForceMode2D.Impulse);
