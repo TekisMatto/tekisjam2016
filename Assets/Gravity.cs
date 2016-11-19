@@ -4,16 +4,20 @@ using System.Collections;
 public class Gravity : MonoBehaviour {
 	public float gravity;
 	private Rigidbody2D rb;
+	private Player player;
 	// Use this for initialization
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
+		player = GetComponent<Player> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector2 v = new Vector2 (0, gravity * Time.deltaTime);
-		rb.velocity -= v;
+		if (!player.isGrounded) {
 
+			Vector2 v = new Vector2 (0, gravity * Time.deltaTime);
+			rb.velocity -= v;
+		}
 	}
 
 

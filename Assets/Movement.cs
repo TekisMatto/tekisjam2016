@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		rb.position += rb.velocity * Time.deltaTime;
+		rb.transform.position += (Vector3) (rb.velocity * Time.deltaTime);
 
 	}
 }
