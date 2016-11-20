@@ -38,7 +38,8 @@ public class OnHitPlayer : MonoBehaviour {
 		bool facingRight = hitter.GetComponent<Facing>().isFacingRight;
 		Rigidbody2D rb = gameObject.GetComponent <Rigidbody2D>();
 		rb.velocity = new Vector2 (
-			8 * (facingRight ? 1 : -1) - (type == 1 ? 4 : 0),
+			( 8 - (type == 1 ? 4 : 0) )* (facingRight ? 1 : -1),
 			4 + (type == 1 ? 6 : 0));
+
 	}
 }

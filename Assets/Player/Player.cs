@@ -31,15 +31,17 @@ public class Player : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
 		playerBox = GetComponent<BoxCollider2D> ().bounds;
 		health = maxHealth;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-            Move();
-            Jump();
-            //Crouch();
+		if (Hitstop.isHitstop (gameObject))
+			return;
+        Move();
+        Jump();
+        //Crouch();
     }
 
 

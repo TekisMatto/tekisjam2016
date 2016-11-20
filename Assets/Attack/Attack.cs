@@ -29,6 +29,9 @@ public class Attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (Hitstop.isHitstop (gameObject))
+			return;
+
         if (isAttacking)
             runningTimer -= Time.deltaTime;
 

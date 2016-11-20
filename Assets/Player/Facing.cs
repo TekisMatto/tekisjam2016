@@ -13,6 +13,10 @@ public class Facing : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (Hitstop.isHitstop (gameObject))
+			return;
+
 		if (Input.GetAxis("Horizontal_id" + player_id) > 0)
             isFacingRight = true;
 		else if (Input.GetAxis("Horizontal_id" + player_id) < 0)

@@ -20,8 +20,14 @@ public class Hitbox : MonoBehaviour {
 	private void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.gameObject.tag == "Player") {
 			collider.gameObject.GetComponent <OnHitPlayer> ().OnHit (gameObject.transform.parent.gameObject, type);
+
+			GetComponentInParent<Hitstop> ().addHitstop (type * 8  * 0.016f);
+			collider.GetComponent<Hitstop> ().addHitstop (type * 8 * 0.016f);
+
 		} else if (collider.gameObject.tag == "Rock") {
 			collider.gameObject.GetComponent <OnHitRock> ().OnHit (gameObject.transform.parent.gameObject, type);
+			GetComponentInParent<Hitstop> ().addHitstop (type * 8  * 0.016f);
+			collider.GetComponent<Hitstop> ().addHitstop (type * 8 * 0.016f);
 		}
 	}
 }
