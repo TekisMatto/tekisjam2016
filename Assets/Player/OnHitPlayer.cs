@@ -3,6 +3,7 @@ using System.Collections;
 
 public class OnHitPlayer : MonoBehaviour {
 
+	public GameObject victoryHandler;
 	// Use this for initialization
 	void Start () {
 	
@@ -24,6 +25,13 @@ public class OnHitPlayer : MonoBehaviour {
 
 		int health = gameObject.GetComponent <Player> ().health -= damage;
 		if (health <= 0) {
+			int id = gameObject.GetComponent <Player> ().player_id;
+			if (id == 1)
+				id = 2;
+			else
+				id = 1;
+			GameObject vh = Instantiate (victoryHandler);
+			vh.GetComponent <VictoryHandlerScript> ().text = "Player " + id + " wins!";
 			Destroy (gameObject);
 		}
 
