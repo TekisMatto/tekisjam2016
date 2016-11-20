@@ -7,11 +7,10 @@ public class Player : MonoBehaviour
 
     Rigidbody2D playerRigidbody;
 
-	Bounds playerBox;
-
-
+    Bounds playerBox;
 
 	public int player_id;
+
     public float speed;
     public float maxSpeed;
     public float jumpSpeed;
@@ -45,10 +44,12 @@ public class Player : MonoBehaviour
     {
 
 		float movement = speed * Input.GetAxis("Horizontal_id"+ player_id);
-		if (Mathf.Abs (movement) < 0.05f)
+
+		if (Mathf.Abs (movement) < 0.05f || GetComponent<Attack>().isAttacking)
 			movement = -playerRigidbody.velocity.x/4;
 
         playerRigidbody.velocity += new Vector2(movement, 0);
+
 		if (Mathf.Abs (playerRigidbody.velocity.x) > maxSpeed)
 		{
 			if (playerRigidbody.velocity.x > 0)

@@ -7,10 +7,18 @@ public class Attack : MonoBehaviour {
     public GameObject attack;
 	private int player_id;
 
-    public float attackTimer;
+    public float attack1CooldownTimer;
+    public float attack2CooldownTimer;
+
+    public float attack1ActiveTimer;
+    public float attack2ActiveTimer;
+
+    public float attack1StartupTimer;
+    public float attack2StartupTimer;
+
     float runningTimer;
 
-    bool isAttacking;
+    public bool isAttacking;
 
     // Use this for initialization
     void Start () {
@@ -35,14 +43,18 @@ public class Attack : MonoBehaviour {
             Vector2 offSet = new Vector2(0,0);
 
             if (Input.GetButtonDown("Fire1_id" + player_id)) { // Strike. Able to set custom timers this way
-                Destroy(newHitbox, attackTimer);
+                Destroy(newHitbox, attack1ActiveTimer);
                 offSet = new Vector2(0.6f, 0);
                 newHitbox.GetComponent<Hitbox>().type = 1;
+                newHitbox.GetComponent<Hitbox>().startupTimer = attack1StartupTimer;
+                runningTimer = attack1CooldownTimer;
             } else { // Bunt
-                Destroy(newHitbox, attackTimer);
+                Destroy(newHitbox, attack2ActiveTimer);
                 newHitbox.transform.Rotate(0, 0, 90);
                 offSet = new Vector2(0.5f, 0);
                 newHitbox.GetComponent<Hitbox>().type = 2;
+                newHitbox.GetComponent<Hitbox>().startupTimer = attack2StartupTimer;
+                runningTimer = attack2CooldownTimer;
             }
             
 
@@ -63,7 +75,6 @@ public class Attack : MonoBehaviour {
 
             newHitbox.transform.SetParent(GetComponent<Transform>());
             isAttacking = true;
-            runningTimer = attackTimer;
         }
     }
 }
