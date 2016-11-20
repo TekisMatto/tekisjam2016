@@ -16,6 +16,8 @@ public class RockDespawner : MonoBehaviour {
 	private void OnTriggerEnter2D (Collider2D collider) {
 		if (collider.gameObject.tag == "Rock") {
 			Destroy (collider.gameObject);
+		} else if (collider.gameObject.tag == "Player") {
+			collider.gameObject.GetComponent <OnHitPlayer>().Damage (999999999);
 		}
 	}
 }
