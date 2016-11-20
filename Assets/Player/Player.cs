@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
 
 	public int player_id;
+	public int maxHealth;
+	public int health = 0;
     public float speed;
     public float maxSpeed;
     public float jumpSpeed;
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
 		playerBox = GetComponent<BoxCollider2D> ().bounds;
+		health = maxHealth;
     }
 
     // Update is called once per frame
