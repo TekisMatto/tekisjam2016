@@ -16,7 +16,7 @@ public class OnHitPlayer : MonoBehaviour {
 	// When hit by another player
 	public void OnHit (GameObject hitter, int type) {
 		int damage;
-		if (type == 0) {
+		if (type == 1) {
 			damage = 8;
 		} else {
 			damage = 0;
