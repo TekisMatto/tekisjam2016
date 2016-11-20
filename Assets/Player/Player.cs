@@ -36,10 +36,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-            Move();
-            Jump();
-            //Crouch();
+		if (Hitstop.isHitstop (gameObject))
+			return;
+        Move();
+        Jump();
+        //Crouch();
     }
 
 

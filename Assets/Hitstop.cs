@@ -5,7 +5,7 @@ using System.Collections;
 
 public class Hitstop : MonoBehaviour {
 
-	static bool isHitstop(GameObject go) {
+	public static bool isHitstop(GameObject go) {
 		Hitstop hs = go.GetComponent<Hitstop> ();
 		if (hs && hs.isHitstop ())
 			return true;

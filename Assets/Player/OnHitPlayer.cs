@@ -32,5 +32,8 @@ public class OnHitPlayer : MonoBehaviour {
 		rb.velocity = new Vector2 (
 			8 * (facingRight ? 1 : -1) - (type == 1 ? 4 : 0),
 			4 + (type == 1 ? 6 : 0));
+
+
+		GetComponent<Hitstop> ().addHitstop (8 + damage);
 	}
 }
