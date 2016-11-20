@@ -34,10 +34,11 @@ public class HealthBar : MonoBehaviour {
 
 	void UpdateRects () {
 		float healthRatio =
-			gameObject.GetComponent <Player> ().health / gameObject.GetComponent <Player> ().maxHealth;
+			(float) gameObject.GetComponent <Player> ().health / gameObject.GetComponent <Player> ().maxHealth;
+		Debug.Log (healthRatio);
 		remainingRect.x = 0 + (player_id == 1 ? 0 : (Screen.width / 2));
 		remainingRect.width = Screen.width / 2 * healthRatio;
-		takenRect.x = healthRatio * width + (player_id == 1 ? 0 : Screen.width / 2);
+		takenRect.x = Screen.width / 2 * healthRatio + (player_id == 1 ? 0 : (Screen.width / 2));
 		takenRect.width = Screen.width / 2 * (1 - healthRatio);
 	}
 
