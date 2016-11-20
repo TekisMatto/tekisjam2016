@@ -72,7 +72,6 @@ public class Attack : MonoBehaviour {
                 }
                 else
                 {
-                    newHitbox.GetComponent<SpriteRenderer>().flipX = false;
                     newHitbox.GetComponent<SpriteRenderer>().flipY = true;
                 }
             }
