@@ -16,7 +16,13 @@ public class Player : MonoBehaviour
     public float maxSpeed;
     public float jumpSpeed;
 
+	public float maxJump;
+	public float airControl;
+
     public bool isGrounded;
+
+
+	private float jumpTime;
 
 
     // Use this for initialization
@@ -29,8 +35,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
             Move();
-            //Jump();
+            Jump();
             //Crouch();
     }
 
@@ -48,6 +55,9 @@ public class Player : MonoBehaviour
 		if (Mathf.Abs (movement) < 0.05f)
 			movement = -playerRigidbody.velocity.x/4;
 
+		if (!isGrounded)
+			movement *= airControl;
+
         playerRigidbody.velocity += new Vector2(movement, 0);
 		if (Mathf.Abs (playerRigidbody.velocity.x) > maxSpeed)
 		{
@@ -60,10 +70,16 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump_id" + player_id) && isGrounded)
+		if (isGrounded)
+			jumpTime = maxJump;
+		else if (!Input.GetButton ("Jump_id" + player_id))
+			jumpTime = 0;
+		
+		if (Input.GetButton("Jump_id" + player_id) && jumpTime > 0)
 		{
             playerRigidbody.velocity += new Vector2(0, jumpSpeed);
             isGrounded = false;
+			jumpTime -= Time.deltaTime;
         }
     }
 
