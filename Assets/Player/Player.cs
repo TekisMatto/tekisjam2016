@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
 		playerBox = GetComponent<BoxCollider2D> ().bounds;
 		health = maxHealth;
+
     }
 
     // Update is called once per frame

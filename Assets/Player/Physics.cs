@@ -6,29 +6,44 @@ public class Physics : MonoBehaviour {
 	private Rigidbody2D rb;
 	private Player player;
 
-	public float hitStop;
+	private Vector2? oldSpeed = null;
+	private Vector2? oldPos = null;
+
+
 	// Use this for initialization
 	void Start() {
 		rb = GetComponent<Rigidbody2D>();
 		player = GetComponent<Player> ();
-		hitStop = 0;
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		if (hitStop > 0) {
-			hitStop -= Time.deltaTime;
+	}
+
+	void FixedUpdate () {
+
+		if (Hitstop.isHitstop (gameObject)) {
+			if (oldSpeed == null)
+				oldSpeed = rb.velocity;
+			rb.velocity = (Vector2)Vector2.zero;
+			
+			if (oldPos == null)
+				oldPos = rb.position;
+			rb.position = (Vector2)oldPos;
+
 			return;
+		} else {
+			if (oldSpeed != null) {
+				rb.velocity = (Vector2)oldSpeed;
+				oldSpeed = null;
+			}
+			if (oldPos != null)
+				oldPos = null;
 		}
 		
-		if (!player.isGrounded) {
+		if (player && !player.isGrounded) {
 
 			Vector2 v = new Vector2 (0, gravity * Time.deltaTime);
 			rb.velocity -= v;
 		}
 
-		rb.transform.position += (Vector3) (rb.velocity * Time.deltaTime);
 
 	}
 
