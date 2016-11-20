@@ -63,14 +63,15 @@ public class Attack : MonoBehaviour {
                 newHitbox.transform.position = new Vector2(offSet.x + playerMidPoint.x, offSet.y + playerMidPoint.y);
             } else {
                 newHitbox.transform.position = new Vector2(-offSet.x + playerMidPoint.x, offSet.y + playerMidPoint.y);
-				/*if (Input.GetButtonDown("Fire1_id" + player_id)) // Cosmetic for current sprites
+				if (Input.GetButtonDown("Fire1_id" + player_id)) // Cosmetic for current sprites
                 {
                     newHitbox.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 else
                 {
+                    newHitbox.GetComponent<SpriteRenderer>().flipX = false;
                     newHitbox.GetComponent<SpriteRenderer>().flipY = true;
-                }*/
+                }
             }
 
             newHitbox.transform.SetParent(GetComponent<Transform>());
